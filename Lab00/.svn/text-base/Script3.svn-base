@@ -1,0 +1,19 @@
+#! /bin/bash
+#$Author$
+#$Date$
+#$HeadURL$
+#$Revision$
+
+Param_Values=$@
+result=$Param_Values
+while (($result >= 0))
+do
+while (($result % 3 != 0))
+do
+let result=$result-1
+done
+echo "$result"
+result=$result-1
+done
+exit 0
+

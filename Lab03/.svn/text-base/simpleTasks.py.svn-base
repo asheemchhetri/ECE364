@@ -1,0 +1,112 @@
+#! /bin/bash
+#
+#$Author$
+#$Date$
+#$HeadURL$
+#$Revision$
+
+def getPairwiseDifference(vec):
+    if not vec or type(vec) != list:
+        return None
+    else:
+        i=1
+        l1=[0]*(len(vec)-1)
+        while i<len(vec):
+            l1[i-1]=vec[i]-vec[i-1]
+            i+=1
+        return l1
+
+def flatten(vec):
+    if not vec or type(vec) != list:
+        return None
+    else:
+        val=[]
+        for item in vec:
+            if type(item) != list:
+                return None
+            val.extend(item)
+    return val
+
+def partition(l,n):
+    if not l or type(l) != list:
+        return None
+    val=[]
+    temp=[]
+    for item in l:
+        if len(temp) < n:
+            temp.append(item)
+        else:
+            val.append(temp)
+            temp=[]
+            temp.append(item)
+
+    if temp:
+        val.append(temp)
+
+    return val
+
+def rectifySignal(l):
+    if type(l) != list or not l:
+        return None
+    else:
+        i=0
+        while i < len(l):
+            if l[i] < 0:
+                l[i] =0
+            i+=1
+
+    return l
+
+def floatRange(a,b,s):
+    if a >= b:
+        return None
+    else:
+        val=[]
+        b = float(b)
+        while round(b,1) >= a:
+            val.append(round(b,1))
+            b-=s
+        val.reverse()
+    return val
+
+def getLongestWord(sentence):
+    if type(sentence) != str:
+        return None
+    else:
+        l=sentence.split()
+        if len(l) < 2:
+            return None
+        max=0;
+        val=""
+        for item in l:
+            if len(item) > max:
+                max = len(item)
+                val = item
+
+        return val
+
+def decodeNumbers(numList):
+    if type(numList) != list:
+        return None
+    else:
+        val=""
+        for item in numList:
+            if type(item) != int:
+                return None
+            val+=chr(item)
+        return val
+
+def getCreditCard(s):
+    if not s:
+        return None
+    else:
+        i=0
+        val=[]
+        while i < len(s):
+            if ord(s[i]) >= 48 and ord(s[i]) <= 57:
+                val.append(int(s[i]))
+            i+=1
+        return val
+
+if __name__ == '__main__':
+    print(ord("9"))

@@ -1,0 +1,19 @@
+#! /bin/bash
+#$Author: ee364b06 $
+#$Date: 2016-01-12 15:39:55 -0500 (Tue, 12 Jan 2016) $
+#$HeadURL: svn+ssh://ece364sv@ecegrid-thin1/home/ecegrid/a/ece364sv/svn/S16/students/ee364b06/Lab00/Script3 $
+#$Revision: 84006 $
+
+Param_Values=$@
+result=$Param_Values
+while (($result >= 0))
+do
+while (($result % 3 != 0))
+do
+let result=$result-1
+done
+echo "$result"
+result=$result-1
+done
+exit 0
+

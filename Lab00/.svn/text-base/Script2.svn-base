@@ -1,0 +1,14 @@
+#! /bin/bash
+#$Author$
+#$Date$
+#$HeadURL$
+#$Revision$
+
+Param_Values=$@
+for ((I=0;I<Param_Values;I++))
+do 
+let result=$Param_Values-$I
+echo "$result"
+done
+exit 0
+

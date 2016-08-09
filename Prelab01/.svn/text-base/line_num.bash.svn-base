@@ -1,0 +1,27 @@
+#! /bin/bash
+#
+#$Author$
+#$Date$
+#$HeadURL$
+#$Revision$
+
+Num_Of_Param=$#
+Param_Values=$@
+cnt=1
+content=1
+if ((Num_Of_Param==1))
+then
+if [[ -e  $1 ]] && [[ -r $1 ]]
+then
+    while read content
+    do
+        echo "$cnt:$content"
+        let cnt=$cnt+1
+    done <$1
+else
+    echo "Cannot read $Param_Values" 
+fi
+else
+    echo "Usage: line_num.bash <filename>"
+fi
+exit 0

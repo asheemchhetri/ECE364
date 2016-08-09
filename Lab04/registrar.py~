@@ -1,0 +1,47 @@
+import glob
+def getDetails():
+    with open("files/students.txt","r") as file:
+        all_lines = file.readlines()
+        student={}
+        details={}
+        for line in all_lines[2:]:
+            student.update({line.split()[4] : line.split()[0]+" "+line.split()[1]+" "+line.split()[2]})
+        filelist = glob.glob('files/EECS*')
+        for filename in filelist:
+            course = filename.split("'EECS' '.txt'")
+            with open(filename,"r") as file1:
+                all_lines1 = file1.readlines()
+                for line1 in all_lines1[2:]:
+                    name = student[line1.split()[0]]
+                    score = int(line1.split()[1])
+                    if  not details or not details[name]:
+                        details.update({name:{(course, score)}})
+		else:
+			details[name].add((course, score))
+    return details
+
+
+def getStudentList():
+    pass
+
+def searchForName():
+    pass
+
+def searchForID():
+    pass
+
+def findScore():
+    pass
+
+def getHighest():
+    pass
+
+def getLowest():
+    pass
+
+def getAverageScore():
+    pass
+
+if __name__ == '__main__':
+    from pprint import pprint as pp
+    pp(getDetails())

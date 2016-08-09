@@ -1,0 +1,39 @@
+#! /bin/bash
+#
+#$Author: ee364b06 $
+#$Date: 2016-02-16 15:15:05 -0500 (Tue, 16 Feb 2016) $
+#$HeadURL: svn+ssh://ece364sv@ecegrid-thin1/home/ecegrid/a/ece364sv/svn/S16/students/ee364b06/Lab05/scheduler.bash $
+#$Revision: 88232 $
+
+if (( $# != 1 ))
+then
+    echo 'Usage: scheduler.bash <filename>'
+    exit 1
+fi
+
+if [[ ! -e $1 || ! -r $1 ]]
+then
+    echo "Error: $1 is not a readable file"
+    exit 2
+fi
+if [[  -e "schedule.out" ]]
+then
+    echo "Error: schedule.out already exists"
+    exit 3
+fi
+
+exec 3<$1
+arr=("07:00" "08:00" "09:00" "10:00" "11:00" "12:00" "13:00" "14:00" "15:00" "16:00" "17:00")
+echo ${arr[*]} >schedule.out
+while read line <&3
+do
+    name=$(echo $line | cut -f1 -d " ")
+    for(i=1; i<12 ;i++)
+    do
+	item=($(echo $line | cut -f2 -d " " | cut -f $i -d ","))
+	echo $iarr
+    done
+done
+exit 0
+
+

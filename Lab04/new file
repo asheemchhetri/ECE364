@@ -1,0 +1,18 @@
+    with open("files/students.txt","r") as file:
+        all_lines = file.readlines()
+        student={}
+        details={}
+        for line in all_lines[2:]:
+            student.update({line.split()[4] : line.split()[0]+" "+line.split()[1]+" "+line.split()[2]})
+        filelist = glob.glob('files/EECS*')
+        for filename in filelist:
+            course = filename.split("'EECS' '.txt'")
+            with open(filename,"r") as file1:
+                all_lines1 = file1.readlines()
+                for line1 in all_lines1[2:]:
+                    name = student[line1.split()[0]]
+                    score = line1.split()[1]
+                    if  not details or not details[name]:
+                        details.update({name:{(course, score)}})
+                    details[name].add((course, score))
+    return details
